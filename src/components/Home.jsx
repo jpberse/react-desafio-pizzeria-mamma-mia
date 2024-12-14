@@ -1,9 +1,13 @@
 import React from 'react'
 import Header from './Header'
+import CardPizza from './CardPizza'
 
 function Home() {
   return (
-    <Header />
+    <div>
+      <Header />
+      <CardPizza />
+    </div>
   )
 }
 

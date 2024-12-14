@@ -5,7 +5,7 @@ function Navbar() {
   const total = 25000;
   const token = false;
   return (
-    <nav className='bg-gray-800 flex justify-between items-center h-12 px-4'>
+    <nav className='bg-black flex justify-between items-center h-14 px-4'>
       <div className='flex items-center gap-2'>
         <h2 className='text-white text-2xl'>Mamma Mia!</h2>
         <ButtonsNav name="Home" icon="🍕"/>
