@@ -4,10 +4,10 @@ import CardPizza from './CardPizza'
 
 function Home() {
   return (
-    <div>
+    <main>
       <Header />
       <CardPizza />
-    </div>
+    </main>
   )
 }
 

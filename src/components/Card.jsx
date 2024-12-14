@@ -4,11 +4,11 @@ function Card({ producto }) {
     const { name, price, ingredients, img } = producto
 
 return (
-    <div class="w-full max-w-xl pb-4 bg-[#e0e0e0] rounded-lg"
+    <article class="w-full max-w-xl pb-4 bg-[#e0e0e0] rounded-lg"
         style={{ boxShadow: '15px 15px 25px #bebebe, -15px -15px 25px #ffffff' }}
     >
         <a href="#">
-            <img class="rounded-t-lg " src={img} alt="product image" />
+            <img class="rounded-t-lg " src={img} alt={`Imagen de una pizza ${name}`}/>
         </a>
         <div class="px-5 pb-5 flex flex-col items-center gap-4">
             <a href="#">
@@ -24,7 +24,7 @@ return (
                 <button type='button' class="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-2xl px-5 py-2.5 me-2 mb-2">🛒 Añadir</button>
             </div>
         </div>
-    </div>
+    </article>
     )
 }
 

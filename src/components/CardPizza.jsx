@@ -22,11 +22,11 @@ const menu = [{
 
 const CardPizza = () => {
     return (
-        <div className="bg-[#e0e0e0] grid grid-cols-3 justify-normal gap-20 p-24">
+        <section className="bg-[#e0e0e0] grid grid-cols-3 justify-normal gap-20 p-24">
             {
                 menu.map(pizza => <Card producto={pizza} />)
             }
-        </div>
+        </section>
     )
 }
 
