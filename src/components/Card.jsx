@@ -16,7 +16,7 @@ return (
             </a>
             <div className="flex flex-col items-center justify-center gap-2">
                 <h4 className="text-gray-600 text-2xl font-light pt-4">Ingredientes:</h4>
-                <span className="text-2xl">🍕 {ingredients.join(", ")}</span>
+                <span className="text-2xl text-center h-14">🍕 {ingredients.join(", ")}</span>
             </div>
             <span className="text-4xl text-center pt-2 pb-6 border-b-2 border-black/15 w-full max-w-xl">Precio: ${price.toLocaleString()}</span>
             <div class="flex items-center justify-between gap-24 pt-6">
