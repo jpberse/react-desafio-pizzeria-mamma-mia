@@ -1,12 +1,13 @@
-import React from 'react'
-import Header from './Header'
-import CardPizza from './CardPizza'
+import React from 'react';
+import Header from './Header';
+import CardPizza from './CardPizza';
+import { pizzas } from './pizzas';
 
 function Home() {
   return (
     <main>
       <Header />
-      <CardPizza />
+      <CardPizza pizzas = { pizzas }/>
     </main>
   )
 }

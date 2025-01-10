@@ -1,32 +1,33 @@
 import React from "react";
-import Card from "./Card";
 
-const menu = [{
-    name: "Napolitana",
-    price: 8990,
-    ingredients: ["mozzarela", "tomates", "jamon", "oregano"],
-    img:"https://firebasestorage.googleapis.com/v0/b/apis-varias-mias.appspot.com/o/pizzeria%2Fpizza-1239077_640_cl.jpg?alt=media&token=6a9a33da-5c00-49d4-9080-784dcc87ec2c"
-},
-{
-    name: "Española",
-    price: 6950,
-    ingredients: ["mozzarella", "gorgonzola", "parmesano", "provolone"],
-    img:"https://firebasestorage.googleapis.com/v0/b/apis-varias-mias.appspot.com/o/pizzeria%2Fcheese-164872_640_com.jpg?alt=media&token=18b2b821-4d0d-43f2-a1c6-8c57bc388fab"
-},
-{
-    name: "Pepperoni",
-    price: 7590,
-    ingredients: ["mozzarella", "pepperoni", "orégano"],
-    img:"https://firebasestorage.googleapis.com/v0/b/apis-varias-mias.appspot.com/o/pizzeria%2Fpizza-1239077_640_com.jpg?alt=media&token=e7cde87a-08d5-4040-ac54-90f6c31eb3e3"
-}]
-
-const CardPizza = () => {
+const CardPizza = ({ pizzas }) => {
     return (
-        <section className="bg-[#e0e0e0] grid grid-cols-3 justify-normal gap-20 p-24">
+        <ul className="bg-[#e0e0e0] grid grid-cols-3 justify-normal gap-20 p-24">
             {
-                menu.map(pizza => <Card producto={pizza} />)
+                pizzas.map(pizza => 
+                    <li className="w-full max-w-xl pb-4 bg-[#e0e0e0] rounded-lg"
+                        style={{ boxShadow: '15px 15px 25px #bebebe, -15px -15px 25px #ffffff' }}
+                    >
+                        <a href="#">
+                            <img className="rounded-t-lg " src={pizza.img} alt={`Imagen de una pizza ${pizza.name}`}/>
+                        </a>
+                        <div className="px-5 pb-5 flex flex-col items-center gap-4">
+                            <a href="#">
+                                <h5 className="text-3xl font-semibold text-gray-900 pt-4">Pizza {pizza.name}</h5>
+                            </a>
+                            <div className="flex flex-col items-center justify-center gap-2">
+                                <h4 className="text-gray-600 text-2xl font-light pt-4">Ingredientes:</h4>
+                                <span className="text-2xl text-center h-14">🍕 {pizza.ingredients.join(", ")}</span>
+                            </div>
+                            <span className="text-4xl text-center pt-2 pb-6 border-b-2 border-black/15 w-full max-w-xl">Precio: ${pizza.price.toLocaleString()}</span>
+                            <div className="flex items-center justify-between gap-24 pt-6">
+                                <button type='button' className='text-gray-900 text-center bg-[#e0e0e0bc] border-2 border-black/25 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-2xl px-5 py-2.5 me-2 mb-2'>Ver Más 👀</button>
+                                <button type='button' className="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-2xl px-5 py-2.5 me-2 mb-2">🛒 Añadir</button>
+                            </div>
+                        </div>
+                    </li>)
             }
-        </section>
+        </ul>
     )
 }
 
