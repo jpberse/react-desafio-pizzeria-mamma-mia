@@ -12,7 +12,7 @@ function Home() {
       const data = await response.json();
       setMenu(data);
     } catch(e) {
-      console.log(e);
+      console.error(e);
     }
     }
 
