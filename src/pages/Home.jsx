@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import Header from './Header';
-import CardPizza from './CardPizza';
-import { pizzas } from '../mock/pizzas';
+import Header from '../components/Header';
+import CardPizza from '../components/CardPizza';
 
 function Home() {
   const [menu, setMenu] = useState([]);
