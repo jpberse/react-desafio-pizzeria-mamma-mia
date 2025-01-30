@@ -1,9 +1,10 @@
 import React from 'react'
 import ButtonsNav from './ButtonsNav';
 import { Link } from 'react-router-dom';
+import { useCart } from '../hooks/useCart.js';
 
 function Navbar() {
-  const total = 25000;
+  const { total } = useCart()
   const token = false;
   return (
     <nav className='bg-black flex justify-between items-center h-14 px-4'>

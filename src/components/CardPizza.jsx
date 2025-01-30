@@ -1,6 +1,8 @@
-import React from "react";
+const CardPizza = ({ img, name, ingredients, price, agregarAlCarro, removerDelCarro, isProductInCart }) => {
+    const addCartToggleClass = isProductInCart ? "text-white bg-red-800 hover:bg-red-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-2xl px-5 py-2.5 me-2 mb-2" : "text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-2xl px-5 py-2.5 me-2 mb-2"
+    
+    const addCartToggleIcon = isProductInCart? '❌ Quitar' : '🛒 Añadir' 
 
-const CardPizza = ({ img, name, ingredients, price }) => {
     return (
                     <article className="w-full max-w-xl pb-4 bg-[#e0e0e0] rounded-lg"
                         style={{ boxShadow: '15px 15px 25px #bebebe, -15px -15px 25px #ffffff' }}
@@ -21,7 +23,7 @@ const CardPizza = ({ img, name, ingredients, price }) => {
                             <span className="text-4xl text-center pt-2 pb-6 border-b-2 border-black/15 w-full max-w-xl">Precio: ${price.toLocaleString()}</span>
                             <div className="flex items-center justify-between gap-24 pt-6">
                                 <button type='button' className='text-gray-900 text-center bg-[#e0e0e0bc] border-2 border-black/25 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-2xl px-5 py-2.5 me-2 mb-2'>Ver Más 👀</button>
-                                <button type='button' className="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-2xl px-5 py-2.5 me-2 mb-2">🛒 Añadir</button>
+                                <button type='button' onClick={ isProductInCart? removerDelCarro : agregarAlCarro } className={addCartToggleClass}>{addCartToggleIcon}</button>
                             </div>
                         </div>
                     </article>

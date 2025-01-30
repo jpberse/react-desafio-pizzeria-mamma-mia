@@ -8,11 +8,12 @@ import Login from './pages/Login.jsx'
 import { Profile } from './pages/Profile.jsx'
 import { NotFound } from './pages/NotFound.jsx'
 import { Route, Routes } from 'react-router-dom'
+import { CartProvider } from './context/cartContext.jsx'
 
 function App() {
   return (
     <>
-      <div className='box-border m-0 p-0'>
+      <CartProvider className='box-border m-0 p-0'>
         <Navbar/>
         <Routes>
           <Route
@@ -53,7 +54,7 @@ function App() {
           />
         </Routes>
         <Footer/>
-      </div>
+      </CartProvider>
     </>
   )
 }

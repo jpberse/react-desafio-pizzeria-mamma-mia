@@ -1,26 +1,18 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import Header from '../components/Header';
 import CardPizza from '../components/CardPizza';
+import { useCart } from '../hooks/useCart.js'
 
 function Home() {
-  const [menu, setMenu] = useState([]);
+  const { getData, menu, cart, agregarAlCarro, removerDelCarro } = useCart();
 
-  const getData = async () => {
-    try {
-      const response = await fetch("http://localhost:5000/api/pizzas");
-      const data = await response.json();
-      setMenu(data);
-    } catch(e) {
-      console.error(e);
-    }
-    }
-
+  const checkPizzaInCart = (pizza) => {
+    return cart.some(item => item.id === pizza.id)
+  }
 
   useEffect(() => {
     getData()
-  }, [])
-
-  console.log(menu)
+  }, []);
 
   return (
     <main>
@@ -28,13 +20,14 @@ function Home() {
       <section className="bg-[#e0e0e0] grid grid-cols-3 justify-normal gap-20 p-24">
         {
           menu.map(pizza => {
+            const isProductInCart = checkPizzaInCart(pizza)
             return(
               <CardPizza 
                 key={pizza.id}
-                img={pizza.img}
-                name={pizza.name}
-                ingredients={pizza.ingredients}
-                price={pizza.price}
+                {...pizza}
+                isProductInCart={isProductInCart}
+                agregarAlCarro={() => agregarAlCarro(pizza)}
+                removerDelCarro={() => removerDelCarro(pizza)}
               />
             )
           })
