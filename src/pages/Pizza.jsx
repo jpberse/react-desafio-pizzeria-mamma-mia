@@ -1,11 +1,13 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 
 const Pizza = () => {
     const [pizza, setPizza] = useState({});
+    const { id } = useParams();
 
     const getData = async () => {
         try {
-        const response = await fetch("http://localhost:5000/api/pizzas/p001");
+        const response = await fetch(`http://localhost:5000/api/pizzas/${id}`);
         const data = await response.json();
         setPizza(data);
         } catch(e) {
@@ -16,7 +18,7 @@ const Pizza = () => {
 
     useEffect(() => {
         getData()
-    }, [])
+    }, [id])
 
     return (
         <section className='h-lvh flex items-center justify-center bg-[#e0e0e0]'>
@@ -49,17 +51,9 @@ const Pizza = () => {
                         </ul>
                     </div>
                     <span className='text-justify text-base'>{pizza.desc}</span>
-                    <span className="text-4xl text-center pt-2 pb-6 border-b-2 border-black/15 w-full max-w-xl">
+                    <span className="text-4xl text-center pt-2 pb-6 w-full max-w-xl">
                         Precio: ${pizza.price?.toLocaleString()}
                     </span>
-                    <div className="flex items-center justify-between gap-24 pt-6">
-                        <button
-                            type="button"
-                            className="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-2xl px-5 py-2.5 me-2 mb-2"
-                        >
-                            🛒 Añadir
-                        </button>
-                    </div>
                 </div>
             </article>
         </section>

@@ -7,10 +7,13 @@ import Register from './pages/Register.jsx'
 import Login from './pages/Login.jsx'
 import { Profile } from './pages/Profile.jsx'
 import { NotFound } from './pages/NotFound.jsx'
-import { Route, Routes } from 'react-router-dom'
+import { Navigate, Route, Routes } from 'react-router-dom'
 import { CartProvider } from './context/cartContext.jsx'
+import { useUser } from './hooks/useUser.js'
 
 function App() {
+  const { token } = useUser();
+
   return (
     <>
       <CartProvider className='box-border m-0 p-0'>
@@ -21,32 +24,28 @@ function App() {
             element={<Home/>}   
           />
           <Route
-            path='/pizza/p001'
-            element={<Pizza />}   
-          />
-          <Route
-            path='/pizza/p001'
+            path='/pizza/:id'
             element={<Pizza />}   
           />
           <Route
             path='/register'
-            element={<Register/>}   
+            element={token === false ? <Register/> : <Navigate to='/'/>}   
           />
           <Route
             path='/login'
-            element={<Login />}   
+            element={token === false ? <Login/> : <Navigate to='/'/>}   
           />
           <Route
             path='/profile'
-            element={<Profile 
-              name='Juan Pablo Bersezio' 
-              email='jp.bersezio@gmail.com' 
-              password='******'
-              />}   
+            element={token === false ? <Navigate to='/login'/> : <Profile name='Juan Pablo Bersezio' email='jp.bersezio@gmail.com' password='******'/>}   
           />
           <Route
             path='/cart'
             element={<Cart />}   
+          />
+          <Route
+            path='/404'
+            element={<NotFound />}   
           />
           <Route
             path='/404'

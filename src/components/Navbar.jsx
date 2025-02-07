@@ -1,33 +1,37 @@
 import React from 'react'
 import ButtonsNav from './ButtonsNav';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { useCart } from '../hooks/useCart.js';
+import { useUser } from '../hooks/useUser.js'
 
 function Navbar() {
-  const { total } = useCart()
-  const token = false;
+  const setActiveClass = ({ isActive }) => (isActive? 'text-black bg-white/85 text-lg font-light border-solid border border-white/50 rounded-md px-2' : 'text-white text-lg font-light border-solid border border-white/50 rounded-md px-2')
+  
+  const { total } = useCart();
+  const { token, logout } = useUser();
+  
   return (
     <nav className='bg-black flex justify-between items-center h-14 px-4'>
       <div className='flex items-center gap-2'>
         <h2 className='text-white text-2xl'>Mamma Mia!</h2>
-        <Link to='/' >        
+        <NavLink className={setActiveClass} to='/' >        
           <ButtonsNav name="Home" icon="🍕"/>
-        </Link>
+        </NavLink>
         { token
-          ? <Link to='/profile'>
+          ? <NavLink className={setActiveClass} to='/profile'>
               <ButtonsNav name="Profile" icon="🔓" /> 
-            </Link> 
+            </NavLink> 
           :          
-            <Link to='/login'>
+            <NavLink className={setActiveClass} to='/login'>
               <ButtonsNav name="Login" icon="🔐" /> 
-            </Link>
+            </NavLink>
         }
         { token
-          ? null
+          ? <button onClick={logout} className='text-white text-lg font-light border-solid border border-white/50 rounded-md px-2'>🔓 logout</button>
           :          
-            <Link to='/register'>
+            <NavLink className={setActiveClass} to='/register'>
               <ButtonsNav name="Register" icon="🔐" />
-            </Link>  
+            </NavLink>  
         }  
       </div> 
       <div>

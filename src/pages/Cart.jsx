@@ -1,17 +1,19 @@
 import React from 'react'
 import { useCart } from '../hooks/useCart.js'
+import { useUser } from '../hooks/useUser.js'
 
 const Cart = () => {
-    const { cart, total, aumentarCantidad, disminuirCantidad } = useCart()
+    const { cart, total, aumentarCantidad, disminuirCantidad } = useCart();
+    const { token } = useUser();
 
     return (
         <section className="w-full h-screen flex flex-col items-center justify-center gap-4">
-                <h2 className='text-3xl font-semibold text-gray-900 pt-4'>Detalles del Pedido:</h2>
-                <ul className='flex flex-col gap-2 w-full max-w-xl py-4 bg-[#e0e0e0] rounded-lg items-center justify-center h-auto'
-                    style={{ boxShadow: '15px 15px 25px #bebebe, -15px -15px 25px #ffffff' }}>
-                    { 
-                        cart.map(pizza => {
-                            return(
+            <h2 className='text-3xl font-semibold text-gray-900 pt-4'>Detalles del Pedido:</h2>
+            <ul className='flex flex-col gap-2 w-full max-w-xl py-4 bg-[#e0e0e0] rounded-lg items-center justify-center h-auto'
+                style={{ boxShadow: '15px 15px 25px #bebebe, -15px -15px 25px #ffffff' }}>
+                { 
+                     cart.map(pizza => {
+                        return(
                             <li key={pizza.id} className='w-full h-20 flex items-center justify-between text-center gap-2 px-4'>
                                 <div className='flex items-center gap-2'>
                                     <img src={pizza.img} alt="" className='size-20 rounded-md drop-shadow-md object-cover'/>
@@ -29,7 +31,7 @@ const Cart = () => {
                     )}
                 </ul>
                 <span className='text-3xl font-semibold text-gray-900 pt-4'>Total: ${total.toLocaleString()}</span>
-                <button className='text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-2xl px-5 py-2.5 me-2 mb-2'>Pagar</button>
+                {token && <button className='text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-2xl px-5 py-2.5 me-2 mb-2'>Pagar</button>}
         </section>
     )
 }

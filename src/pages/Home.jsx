@@ -1,10 +1,11 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import Header from '../components/Header';
 import CardPizza from '../components/CardPizza';
 import { useCart } from '../hooks/useCart.js'
 
+
 function Home() {
-  const { getData, menu, cart, agregarAlCarro, removerDelCarro } = useCart();
+  const { getData, menu, cart, agregarAlCarro, removerDelCarro} = useCart();
 
   const checkPizzaInCart = (pizza) => {
     return cart.some(item => item.id === pizza.id)

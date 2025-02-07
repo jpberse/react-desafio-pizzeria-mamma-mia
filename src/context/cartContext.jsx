@@ -5,9 +5,9 @@ export const CartContext = createContext();
 export function CartProvider ({ children }) {
     const [menu, setMenu] = useState([]);
     const [cart, setCart] = useState([]);
-    const [total, setTotal] = useState(0);
+    const [total, setTotal] = useState(0);  
 
-    const getData = async () => {
+    const getData = async (url) => {
         try {
           const response = await fetch("http://localhost:5000/api/pizzas");
           const data = await response.json();
@@ -88,7 +88,7 @@ export function CartProvider ({ children }) {
             agregarAlCarro,
             removerDelCarro,
             aumentarCantidad,
-            disminuirCantidad
+            disminuirCantidad,
         }}
         
         >
