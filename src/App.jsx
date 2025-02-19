@@ -37,7 +37,7 @@ function App() {
           />
           <Route
             path='/profile'
-            element={token === false ? <Navigate to='/login'/> : <Profile name='Juan Pablo Bersezio' email='jp.bersezio@gmail.com' password='******'/>}   
+            element={token === false ? <Navigate to='/login'/> : <Profile />}   
           />
           <Route
             path='/cart'

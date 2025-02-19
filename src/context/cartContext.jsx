@@ -7,7 +7,7 @@ export function CartProvider ({ children }) {
     const [cart, setCart] = useState([]);
     const [total, setTotal] = useState(0);  
 
-    const getData = async (url) => {
+    const getData = async () => {
         try {
           const response = await fetch("http://localhost:5000/api/pizzas");
           const data = await response.json();
