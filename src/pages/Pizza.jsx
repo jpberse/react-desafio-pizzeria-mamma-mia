@@ -38,12 +38,12 @@ const Pizza = () => {
 				</a>
 				<div className="px-5 pb-5 flex flex-col items-center gap-2">
 					<a href="#">
-						<h5 className="text-4xl font-semibold text-gray-900 pt-4">
+						<h5 className="text-4xl sm:text-lg font-semibold text-gray-900 pt-4">
 							Pizza {pizza.name}
 						</h5>
 					</a>
 					<div className="flex flex-col items-center justify-center gap-2">
-						<h4 className="text-gray-600 text-2xl font-light pt-4">
+						<h4 className="text-gray-600 text-2xl sm:text-lg font-light pt-4">
 							Ingredientes:
 						</h4>
 						<ul className="text-2xl text-center h-10 flex">

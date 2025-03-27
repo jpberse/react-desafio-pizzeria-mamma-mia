@@ -39,79 +39,90 @@ const Cart = () => {
 	};
 
 	return (
-		<section className="w-full h-screen flex flex-col items-center justify-center gap-4">
-			<h2 className="text-3xl font-semibold text-gray-900 pt-4">
-				Detalles del Pedido:
-			</h2>
-			<ul
-				className="flex flex-col gap-2 w-full max-w-xl py-4 bg-[#e0e0e0] rounded-lg items-center justify-center h-auto"
-				style={{
-					boxShadow: "15px 15px 25px #bebebe, -15px -15px 25px #ffffff",
-				}}
-			>
-				{cart.map((pizza) => {
-					return (
-						<li
-							key={pizza.id}
-							className="w-full h-20 flex items-center justify-between text-center gap-2 px-4"
-						>
-							<div className="flex items-center gap-2">
-								<img
-									src={pizza.img}
-									alt=""
-									className="size-20 rounded-md drop-shadow-md object-cover"
-								/>
-								<span className="text-xl font-semibold text-gray-900">
-									Pizza {pizza.name}
-								</span>
-							</div>
-							<div className="flex items-center">
-								<span className="text-xl font-semibold text-gray-900 px-2">
-									${pizza.price.toLocaleString()}
-								</span>
-								<button
-									onClick={() => {
-										disminuirCantidad(pizza);
-										setMessage("");
-									}}
-									className="bg-transparent hover:bg-red-500 text-red-700 font-semibold hover:text-white py-1 px-2 border border-red-500 hover:border-transparent rounded"
-								>
-									-
-								</button>
-								<span className="text-xl font-semibold text-gray-900 px-2">
-									{pizza.quantity}
-								</span>
-								<button
-									onClick={() => {
-										aumentarCantidad(pizza);
-										setMessage("");
-									}}
-									className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-1 px-2 border border-blue-500 hover:border-transparent rounded"
-								>
-									+
-								</button>
-							</div>
-						</li>
-					);
-				})}
-			</ul>
-			<span className="text-3xl font-semibold text-gray-900 pt-4">
-				Total: ${total.toLocaleString()}
-			</span>
-			{token && (
-				<button
-					className="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-2xl px-5 py-2.5 me-2 mb-2"
-					onClick={handleCarrito}
+		<div className="flex items-center justify-center h-screen bg-[#e0e0e0]">
+			<section className="w-3/4 sm:w-60 md:w-[900px] h-screen flex flex-col items-center justify-center gap-4">
+				<h2 className="text-3xl font-semibold text-gray-900 pt-4">
+					Detalles del Pedido:
+				</h2>
+				<ul
+					className="flex flex-col gap-2 w-full max-w-xl py-4 bg-[#e0e0e0] rounded-lg items-center justify-center h-auto"
+					style={{
+						boxShadow: "15px 15px 25px #bebebe, -15px -15px 25px #ffffff",
+					}}
 				>
-					Pagar
-				</button>
-			)}
-			{message && (
+					{cart.length === 0 ? (
+						<span className="text-3xl font-semibold text-gray-900 py-24">
+							No hay productos en el Carrito
+						</span>
+					) : (
+						cart.map((pizza) => {
+							return (
+								<li
+									key={pizza.id}
+									className="w-full h-20 flex items-center justify-between text-center gap-2 px-4"
+								>
+									<div className="flex items-center gap-2">
+										<img
+											src={pizza.img}
+											alt=""
+											className="size-20 rounded-md drop-shadow-md object-cover"
+										/>
+										<span className="text-xl font-semibold text-gray-900">
+											Pizza {pizza.name}
+										</span>
+									</div>
+									<div className="flex items-center">
+										<span className="text-xl font-semibold text-gray-900 px-2">
+											${pizza.price.toLocaleString()}
+										</span>
+										<button
+											type="button"
+											onClick={() => {
+												disminuirCantidad(pizza);
+												setMessage("");
+											}}
+											className="bg-transparent hover:bg-red-500 text-red-700 font-semibold hover:text-white py-1 px-2 border border-red-500 hover:border-transparent rounded"
+										>
+											-
+										</button>
+										<span className="text-xl font-semibold text-gray-900 px-2">
+											{pizza.quantity}
+										</span>
+										<button
+											type="button"
+											onClick={() => {
+												aumentarCantidad(pizza);
+												setMessage("");
+											}}
+											className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-1 px-2 border border-blue-500 hover:border-transparent rounded"
+										>
+											+
+										</button>
+									</div>
+								</li>
+							);
+						})
+					)}
+				</ul>
 				<span className="text-3xl font-semibold text-gray-900 pt-4">
-					{message}
+					Total: ${total.toLocaleString()}
 				</span>
-			)}
-		</section>
+				{token && (
+					<button
+						type="button"
+						className="text-white bg-orange-500 hover:bg-orange-600 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-2xl px-5 py-2.5 me-2 mb-2"
+						onClick={handleCarrito}
+					>
+						Pagar
+					</button>
+				)}
+				{message && (
+					<span className="text-3xl font-semibold text-gray-900 pt-4">
+						{message}
+					</span>
+				)}
+			</section>
+		</div>
 	);
 };
 

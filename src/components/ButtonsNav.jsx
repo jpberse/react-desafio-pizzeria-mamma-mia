@@ -1,9 +1,7 @@
-import React from 'react'
+import React from "react";
 
-function ButtonsNav({ name, icon }) {
-    return (
-        <button>{icon} {name}</button>
-    )
+function ButtonsNav({ name }) {
+	return <button type="button">{name}</button>;
 }
 
-export default ButtonsNav
+export default ButtonsNav;
