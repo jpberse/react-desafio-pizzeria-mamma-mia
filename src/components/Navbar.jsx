@@ -4,6 +4,7 @@ import { Link, NavLink } from "react-router-dom";
 import { useCart } from "../hooks/useCart.js";
 import { useUser } from "../hooks/useUser.js";
 import logo from "../assets/logo.png";
+import { MdOutlineShoppingCartCheckout } from "react-icons/md";
 
 function Navbar() {
 	const setActiveClass = ({ isActive }) =>
@@ -90,9 +91,10 @@ function Navbar() {
 				<Link to="/cart">
 					<button
 						type="button"
-						className="text-orange-400 text-lg font-light border-solid border border-orange-400/50 rounded-md px-2 py-1"
+						className="text-orange-400 text-lg flex items-center gap-2 font-light border-solid border border-orange-400/50 rounded-md px-2 py-1 transition duration-300 hover:bg-orange-400 hover:text-white"
 					>
-						🛒 Total: ${total.toLocaleString()}
+						<MdOutlineShoppingCartCheckout className="text-white cursor-pointer transition duration-300" />{" "}
+						Total: ${total.toLocaleString()}
 					</button>
 				</Link>
 			</div>

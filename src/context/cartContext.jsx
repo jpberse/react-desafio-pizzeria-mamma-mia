@@ -80,6 +80,11 @@ export function CartProvider({ children }) {
 		setTotal(total);
 	};
 
+	const limpiarCarro = () => {
+		setCart([]);
+		setTotal(0);
+	};
+
 	return (
 		<CartContext.Provider
 			value={{
@@ -94,6 +99,7 @@ export function CartProvider({ children }) {
 				removerDelCarro,
 				aumentarCantidad,
 				disminuirCantidad,
+				limpiarCarro,
 			}}
 		>
 			{children}
