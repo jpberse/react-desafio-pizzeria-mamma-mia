@@ -26,21 +26,23 @@ function Login() {
 	return (
 		<div className="h-screen bg-[#e0e0e0] flex items-center justify-center p-6 space-y-4">
 			<section
-				className="w-full max-w-lg pb-4 bg-[#e0e0e0] rounded-lg h-3/5 flex flex-col items-center justify-center text-gray-900"
+				className="w-full h-[50%] max-w-lg pb-4 bg-[#e0e0e0] rounded-lg md:h-[50%] flex flex-col items-center justify-center text-gray-900"
 				style={{
 					boxShadow: "15px 15px 30px #bebebe, -15px -15px 30px #ffffff",
 				}}
 			>
-				<h2 className="text-3xl text-start font-bold leading-tight tracking-tight mb-6">
-					Bienvenido/a
+				<h2 className="text-3xl text-start font-bold leading-tight tracking-tight my-6">
+					Welcome!
 				</h2>
 				<form
-					className="w-full max-w-md flex flex-col items-start justify-center"
+					className="w-full max-w-xs md:max-w-md flex flex-col items-start justify-center"
 					onSubmit={handleSubmit}
 				>
-					<label className="block mb-2 text-lg font-medium">Email</label>
+					<label for="email" className="block mb-2 text-lg font-medium">
+						Email
+					</label>
 					<input
-						className="bg-gray-50  border border-gray-300 text-lg rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 mb-4"
+						className="bg-gray-50 border border-gray-300 text-lg rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 mb-4"
 						type="email"
 						name="email"
 						placeholder="shifu@pizza.cl"
@@ -48,7 +50,12 @@ function Login() {
 						onChange={(e) => setEmail(e.target.value)}
 						onClick={() => setMessage("")}
 					/>
-					<label className="block mb-2 text-lg font-medium">Contraseña</label>
+					<label
+						for="confirmpassword"
+						className="block mb-2 text-lg font-medium"
+					>
+						Password
+					</label>
 					<input
 						className="bg-gray-50 border border-gray-300 text-lg rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 mb-8"
 						type="password"

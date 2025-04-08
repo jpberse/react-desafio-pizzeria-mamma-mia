@@ -12,12 +12,12 @@ function Home() {
 
 	useEffect(() => {
 		getData();
-	}, []);
+	}, [getData]);
 
 	return (
 		<main>
 			<Header />
-			<section className="bg-[#e0e0e0] grid grid-cols-[repeat(auto-fit,minmax(400px,1fr))] justify-normal gap-20 p-24">
+			<section className="bg-[#e0e0e0] grid grid-cols-[repeat(auto-fit,minmax(400px,1fr))] place-items-center gap-10 sm:gap-16 md:gap-20 sm:p-4 md:p-24 py-10">
 				{menu.map((pizza) => {
 					const isProductInCart = checkPizzaInCart(pizza);
 					return (
