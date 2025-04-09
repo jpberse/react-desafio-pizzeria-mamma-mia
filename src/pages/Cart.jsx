@@ -66,30 +66,30 @@ const Cart = () => {
 							return (
 								<li
 									key={pizza.id}
-									className="w-full md:w-5/6 h-auto flex items-center justify-between text-center gap-2 m-2 md:p-4 border-1 rounded-lg shadow-md"
+									className="w-full sm:w-5/6 h-auto flex items-center justify-between text-center gap-4 sm:gap-1 m-2 md:p-4 border-1 rounded-lg shadow-md"
 								>
-									<div className="flex items-center gap-2">
+									<div className="flex items-center sm:gap-2">
 										<img
 											src={pizza.img}
 											alt=""
-											className="size-20 rounded-md drop-shadow-md object-cover"
+											className="size-16 sm:size-20 rounded-md drop-shadow-md object-cover"
 										/>
-										<span className="text-md md:text-xl font-semibold text-gray-900">
+										<span className="pl-2 text-xs sm:text-xl font-semibold text-gray-900">
 											Pizza {pizza.name}
 										</span>
 									</div>
-									<div className="flex items-center gap-4">
+									<div className="flex items-center">
 										<button
 											type="button"
 											onClick={() => {
 												disminuirCantidad(pizza);
 												setMessage("");
 											}}
-											className="bg-transparent hover:bg-red-500 text-red-700 font-semibold hover:text-white w-8 h-8 border border-red-500 hover:border-transparent rounded-full"
+											className="bg-transparent hover:bg-red-500 text-red-700 font-semibold hover:text-white w-6 h-6 sm:w-8 sm:h-8 border border-red-500 hover:border-transparent rounded-full text-sm sm:text-lg text-center items-center justify-center"
 										>
 											-
 										</button>
-										<span className="text-xl font-semibold text-gray-900 px-2">
+										<span className="text-sm sm:text-xl font-semibold text-gray-900 px-2">
 											{pizza.quantity}
 										</span>
 										<button
@@ -98,7 +98,7 @@ const Cart = () => {
 												aumentarCantidad(pizza);
 												setMessage("");
 											}}
-											className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white w-8 h-8 border border-blue-500 hover:border-transparent rounded-full"
+											className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white w-6 h-6 sm:w-8 sm:h-8 border border-blue-500 hover:border-transparent rounded-full text-xs sm:text-lg text-center items-center justify-center"
 										>
 											+
 										</button>
